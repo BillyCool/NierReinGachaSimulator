@@ -2,6 +2,10 @@
 .card-footer[b-2eielk76ww] {
     background: #101010;
 }
+
+.nav-link.active .card-footer[b-2eielk76ww] {
+    background: #202020;
+}
 /* /Components/GachaItemCostume.razor.rz.scp.css */
 .fade-out-in[b-bdcilqw6ht] {
     -webkit-animation: fadeoutin 4s linear;
