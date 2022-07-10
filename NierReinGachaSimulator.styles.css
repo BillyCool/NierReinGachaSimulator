@@ -1,0 +1,84 @@
+/* /Components/BannerCard.razor.rz.scp.css */
+.card-footer[b-2eielk76ww] {
+    background: #101010;
+}
+/* /Components/GachaItemCostume.razor.rz.scp.css */
+.fade-out-in[b-bdcilqw6ht] {
+    -webkit-animation: fadeoutin 4s linear;
+    animation: fadeoutin-b-bdcilqw6ht 4s linear;
+    animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes fadeoutin {
+    0%,100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+@keyframes fadeoutin-b-bdcilqw6ht {
+    0%,100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+/* /Components/GachaItemInfo.razor.rz.scp.css */
+.pull-item-attribute[b-84yo427ucq] {
+    z-index: 2;
+}
+
+.pull-item-type[b-84yo427ucq] {
+    top: 34px;
+    z-index: 2;
+}
+/* /Components/GachaItemWeapon.razor.rz.scp.css */
+.fade-in-out[b-4a4zeqfki6] {
+    -webkit-animation: fadeinout 4s linear;
+    animation: fadeinout-b-4a4zeqfki6 4s linear;
+    animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes fadeinout {
+    0%,100% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeinout-b-4a4zeqfki6 {
+    0%,100% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+/* /Shared/MainLayout.razor.rz.scp.css */
+.page[b-326rqreosk] {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-direction: row;
+    background: #101010;
+}
+
+main[b-326rqreosk] {
+    flex: 1;
+}
+
+.sidebar[b-326rqreosk] {
+    background: #000;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+}
