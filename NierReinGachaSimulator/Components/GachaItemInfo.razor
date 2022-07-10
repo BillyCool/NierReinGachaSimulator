@@ -1,0 +1,12 @@
+﻿<img class="position-absolute top-0 start-0" src="img/ui/attribute_@(AttributeTypeStr).png" />
+<img class="pull-item-type position-absolute start-0" src="img/ui/weapon_icon_@(WeaponTypeStr).png" />
+
+@code {
+    [Parameter]
+    [EditorRequired]
+    public GachaWeapon Weapon { get; set; }
+
+    public  string AttributeTypeStr => Weapon?.AttributeType.ToString().ToLowerInvariant();
+
+    public string WeaponTypeStr => Weapon?.WeaponType.ToString().ToLowerInvariant().Replace("_", string.Empty);
+}

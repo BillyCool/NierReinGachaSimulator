@@ -1,0 +1,19 @@
+﻿<div class="col d-flex justify-content-center mt-4">
+    <div class="card" style="width: 16rem;">
+        <CascadingValue Name="RarityType" Value="RarityType">
+            <BannerResultItemHeader />
+            <BannerResultItemBody WeaponCount="WeaponCount" CostumeCount="CostumeCount" />
+        </CascadingValue>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public RarityType RarityType { get; set; }
+    
+    [Parameter]
+    public int WeaponCount { get; set; }
+    
+    [Parameter]
+    public int? CostumeCount { get; set; }
+}

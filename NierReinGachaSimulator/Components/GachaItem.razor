@@ -1,0 +1,22 @@
+﻿<div class="col d-flex justify-content-center mt-4">
+    @if (Item == null)
+    {
+        <GachaItemBackground />
+    }
+    else
+    {
+        <span class="d-flex justify-content-center position-relative">
+            <GachaItemBackground Type="Item?.Weapon?.RarityType" />
+            <GachaItemInfo Weapon="Item?.Weapon" />
+            <GachaItemWeapon Weapon="Item?.Weapon" HasCostume="Item.HasCostume" />
+            <GachaItemCostume Costume="Item?.Costume" />
+        </span>
+    }
+</div>
+
+@code {
+
+    [Parameter]
+    [EditorRequired]
+    public PullItem Item { get; set; }
+}

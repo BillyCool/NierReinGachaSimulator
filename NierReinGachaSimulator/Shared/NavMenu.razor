@@ -1,0 +1,9 @@
+﻿@foreach (var gacha in Gachas)
+{
+    <BannerCard Gacha="gacha" />
+}
+
+@code {
+    [CascadingParameter(Name = "Gachas")]
+    public Gacha[] Gachas { get; set; }
+}

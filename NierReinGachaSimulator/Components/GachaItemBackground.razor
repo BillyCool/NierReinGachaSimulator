@@ -1,0 +1,21 @@
+﻿@if (Type == null)
+{
+    <img src="img/ui/costume_empty_large.png" />
+}
+else
+{
+    <img src="img/ui/thumbnail_bg_@(RarityTypeStr)_b.png" />
+    @*<img class="pull-item" src="img/ui/thumbnail_frame_@(RarityTypeStr).png" />*@
+}
+
+@code {
+    [Parameter]
+    public RarityType? Type { get; set; }
+    
+    public string RarityTypeStr => Type switch
+    {
+        RarityType.SS_RARE => "rainbow",
+        RarityType.S_RARE => "gold",
+        _ => "silver"
+    };
+}

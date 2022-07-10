@@ -1,0 +1,17 @@
+﻿@page "/"
+
+<PageTitle>NieR Reincarnation Gacha Simulator</PageTitle>
+
+@if (Gachas.Length > 0)
+{
+    <Banner GachaId="Gachas.First().GachaId" />
+}
+else
+{
+    <p><em>You reached the end of the cage...</em></p>
+}
+
+@code {
+    [CascadingParameter(Name = "Gachas")]
+    public Gacha[] Gachas { get; set; }
+}

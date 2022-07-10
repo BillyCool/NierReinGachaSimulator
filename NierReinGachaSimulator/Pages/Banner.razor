@@ -1,0 +1,163 @@
+﻿@page "/{gachaId:int}"
+@using System.Collections.Generic;
+@inject NavigationManager NavigationManager
+
+@if (Gacha == null)
+{
+    <p><em>You reached the end of the cage...</em></p>
+}
+else
+{
+    <PageTitle>@Gacha.Name</PageTitle>
+
+    <div class="container" style="height:508px;">
+        <GachaItemRow>
+            <GachaItem Item="@Pulls.ElementAtOrDefault(0)"></GachaItem>
+            <GachaItem Item="@Pulls.ElementAtOrDefault(1)"></GachaItem>
+            <GachaItem Item="@Pulls.ElementAtOrDefault(2)"></GachaItem>
+            <GachaItem Item="@Pulls.ElementAtOrDefault(3)"></GachaItem>
+            <GachaItem Item="@Pulls.ElementAtOrDefault(4)"></GachaItem>
+        </GachaItemRow>
+        <GachaItemRow>
+            <GachaItem Item="@Pulls.ElementAtOrDefault(5)"></GachaItem>
+            <GachaItem Item="@Pulls.ElementAtOrDefault(6)"></GachaItem>
+            <GachaItem Item="@Pulls.ElementAtOrDefault(7)"></GachaItem>
+            <GachaItem Item="@Pulls.ElementAtOrDefault(8)"></GachaItem>
+            <GachaItem Item="@Pulls.ElementAtOrDefault(9)"></GachaItem>
+        </GachaItemRow>
+    </div>
+    <br/>
+    <div class="container text-center">
+        <p>
+            <button type="button" class="btn btn-light user-select-none me-2" onclick=@OnPullAction>Pull</button>
+            <button type="button" class="btn btn-light user-select-none" onclick=@OnResetAction>Reset</button>
+        </p>
+        <p role="status">Pulls: @(PullCounter * 10)</p>
+    </div>
+    <CascadingValue Name="Gacha" Value="Gacha" >
+        <CascadingValue Name="PullCounter" Value="PullCounter">
+            <BannerResultRow WeaponTracking="WeaponTracking" CostumeTracking="CostumeTracking" />
+        </CascadingValue>
+    </CascadingValue>
+}
+
+@code {
+    [Parameter]
+    public int GachaId { get; set; }
+
+    [CascadingParameter(Name = "Gachas")]
+    public Gacha[] Gachas { get; set; }
+
+    private Gacha Gacha => Gachas?.FirstOrDefault(x => x.GachaId == GachaId);
+
+    private List<PullItem> Pulls = new();
+
+    private int PullCounter = 0;
+
+    private Dictionary<RarityType, int> WeaponTracking = new();
+
+    private Dictionary<RarityType, int> CostumeTracking = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        NavigationManager.LocationChanged += OnLocationChanged;
+    }
+
+    private async Task OnPullAction()
+    {
+        Pulls.Clear();
+        await Task.Delay(1);
+
+        for (int i = 0; i < 9; i++)
+            Pulls.Add(PullItem());
+        Pulls.Add(PullLastItem());
+
+        PullCounter++;
+    }
+
+    private async Task OnResetAction()
+    {
+        Pulls.Clear();
+        await Task.Delay(1);
+        PullCounter = 0;
+        WeaponTracking.Clear();
+        CostumeTracking.Clear();
+        this.StateHasChanged();
+    }
+
+    private async void OnLocationChanged(object sender, EventArgs e)
+    {
+        await OnResetAction();
+    }
+
+    private PullItem PullItem()
+    {
+        if (Gacha == null) return null;
+
+        PullItem item = PullItemFromPool(Gacha.RarityRateDetailList);
+        TrackItem(item);
+
+        return item;
+    }
+
+
+    private PullItem PullLastItem()
+    {
+        if (Gacha == null) return null;
+
+        PullItem item = PullItemFromPool(Gacha.LastChanceRarityRateDetailList);
+        TrackItem(item);
+
+        return item;
+    }
+
+    private PullItem PullItemFromPool(List<RarityRateDetail> items)
+    {
+        Random rand = new();
+
+        // Get universal probability
+        decimal u = items.Sum(x => x.Rate);
+
+        // Get random number between 0 and total probability
+        decimal r = (decimal)rand.NextDouble() * u;
+
+        // Loop until the random number is less than the cumulative probability
+        decimal sum = 0;
+        foreach (var item in items)
+        {
+            if (r <= (sum = sum + item.Rate))
+            {
+                return new PullItem
+                    {
+                        Weapon = item.Weapon,
+                        Costume = item.Costume
+                    };
+            }
+        }
+
+        // Should never get here
+        return null;
+    }
+
+    private void TrackItem(PullItem item)
+    {
+        if (item == null) return;
+
+        if (!WeaponTracking.ContainsKey(item.Weapon.RarityType))
+        {
+            WeaponTracking[item.Weapon.RarityType] = 0;
+        }
+
+        WeaponTracking[item.Weapon.RarityType]++;
+
+        if (item.Costume != null)
+        {
+            if (!CostumeTracking.ContainsKey(item.Weapon.RarityType))
+            {
+                CostumeTracking[item.Weapon.RarityType] = 0;
+            }
+
+            CostumeTracking[item.Weapon.RarityType]++;
+        }
+    }
+}

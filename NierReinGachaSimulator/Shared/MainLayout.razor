@@ -1,0 +1,32 @@
+﻿@inherits LayoutComponentBase
+@inject HttpClient Http
+
+@if (Gachas == null)
+{
+    <p><em>Teleporting into the cage...</em></p>
+}
+else
+{
+<CascadingValue Name="Gachas" Value="Gachas">
+    <div class="page text-white">
+        <div class="sidebar overflow-auto">
+            <NavMenu />
+        </div>
+
+        <main>
+            <article class="content px-4">
+                @Body
+            </article>
+        </main>
+    </div>
+</CascadingValue>
+}
+
+@code {
+    private Gacha[] Gachas;
+
+    protected override async Task OnInitializedAsync()
+    {
+        Gachas = await Http.GetFromJsonAsync<Gacha[]>("data/gacha.json");
+    }
+}

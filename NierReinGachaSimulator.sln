@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32616.157
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NierReinGachaSimulator", "NierReinGachaSimulator\NierReinGachaSimulator.csproj", "{42E44E07-3C50-44DE-93A3-50CA28B6E494}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{42E44E07-3C50-44DE-93A3-50CA28B6E494}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42E44E07-3C50-44DE-93A3-50CA28B6E494}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42E44E07-3C50-44DE-93A3-50CA28B6E494}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42E44E07-3C50-44DE-93A3-50CA28B6E494}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {144180B8-3BA3-4509-8A96-1E419D592C87}
+	EndGlobalSection
+EndGlobal

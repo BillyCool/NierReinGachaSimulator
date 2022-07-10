@@ -1,0 +1,15 @@
+﻿<a class="text-decoration-none" href="@Gacha.GachaId">
+    <div class="card m-3" style="width: 18rem;">
+        <img src="img/gacha/@(Gacha.GachaId).png" class="card-img-top" alt="@Gacha.Name">
+        <div class="card-footer text-white">
+            @Gacha.Name
+        </div>
+
+    </div>
+</a>
+
+@code {
+    [Parameter]
+    [EditorRequired]
+    public Gacha Gacha { get; set; }
+}

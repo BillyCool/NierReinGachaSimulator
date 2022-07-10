@@ -1,0 +1,105 @@
+﻿<div class="card-body align-middle" style="background: #2a2a2a; border-radius: 0 0 0.375rem 0.375rem;">
+    <div>
+        Weapons: &nbsp;@WeaponCount
+        <span class="badge rounded-pill bg-@(GetWeaponRngBadge()) user-select-none float-end">@GetWeaponRngString()</span>
+    </div>
+    @if (CostumeCount != null)
+    {
+        <br />
+        <div>
+            Costumes: @CostumeCount
+        <span class="badge rounded-pill bg-@(GetCostumeRngBadge()) user-select-none float-end">@GetCostumeRngString()</span>
+        </div>
+    }
+</div>
+
+@code {
+
+    [CascadingParameter(Name = "Gacha")]
+    public Gacha Gacha { get; set; }
+
+    [CascadingParameter(Name = "PullCounter")]
+    public int PullCounter { get; set; }
+
+    [CascadingParameter(Name = "RarityType")]
+    public RarityType RarityType { get; set; }
+
+    [Parameter]
+    public int WeaponCount { get; set; }
+
+    [Parameter]
+    public int? CostumeCount { get; set; }
+
+    private decimal CostumeRngOffset => GetOffsetInternal(CostumeCount, true);
+
+    private decimal WeaponRngOffset => GetOffsetInternal(WeaponCount - CostumeCount, false);
+
+    private string GetCostumeRngString()
+    {
+        if (CostumeCount == null || PullCounter == 0) return string.Empty;
+
+        return (CostumeRngOffset) switch
+        {
+            decimal x when x < -30M => "very bad",
+            decimal x when x < -15M => "bad",
+            decimal x when x > 30M => "very good",
+            decimal x when x > 15M => "good",
+            _ => "average",
+        };
+    }
+
+    private string GetCostumeRngBadge()
+    {
+        if (CostumeCount == null || PullCounter == 0) return string.Empty;
+
+        return (CostumeRngOffset) switch
+        {
+            decimal x when x < -15M => "danger",
+            decimal x when x > 15M => "success",
+            _ => "secondary",
+        };
+    }
+
+    private string GetWeaponRngString()
+    {
+        if (PullCounter == 0) return string.Empty;
+
+        return (WeaponRngOffset) switch
+        {
+            decimal x when x < -30M => "very bad",
+            decimal x when x < -15M => "bad",
+            decimal x when x > 30M => "very good",
+            decimal x when x > 15M => "good",
+            _ => "average",
+        };
+    }
+
+    private string GetWeaponRngBadge()
+    {
+        if (PullCounter == 0) return string.Empty;
+
+        return (WeaponRngOffset) switch
+        {
+            decimal x when x < -15M => "danger",
+            decimal x when x > 15M => "success",
+            _ => "secondary",
+        };
+    }
+
+    private decimal GetOffsetInternal(int? entityCount, bool isCostume)
+    {
+        if (entityCount == null || PullCounter == 0) return 0.0M;
+
+        decimal entityRate = Gacha.RarityRateList.FirstOrDefault(x => x.RarityType == RarityType && x.WithCostume == isCostume)?.Rate ?? 0;
+        decimal entityRateLast = Gacha.LastChanceRarityRateList.FirstOrDefault(x => x.RarityType == RarityType && x.WithCostume == isCostume)?.Rate ?? 0;
+        decimal entityRateTotal = entityRate * 0.9M + entityRateLast * 0.1M;
+
+        if (entityRateTotal == 0.0M)  return 0.0M;
+
+        decimal costumePullRate = entityCount.Value > 0
+            ? entityCount.Value / (PullCounter * 10.0M) * 100M
+            : 0.0M;
+
+        return ((costumePullRate - entityRateTotal) / entityRateTotal * 100M);
+    }
+}

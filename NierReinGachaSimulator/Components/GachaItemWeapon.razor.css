@@ -1,0 +1,25 @@
+﻿.fade-in-out {
+    -webkit-animation: fadeinout 4s linear;
+    animation: fadeinout 4s linear;
+    animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes fadeinout {
+    0%,100% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeinout {
+    0%,100% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}

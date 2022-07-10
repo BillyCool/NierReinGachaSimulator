@@ -1,0 +1,9 @@
+﻿@if (Costume != null)
+{
+    <img class="position-absolute top-0 bottom-0 my-auto mx-0 fade-out-in" src="img/costume/@(Costume.FileName)_large.png" />
+}
+
+@code {
+    [Parameter]
+    public GachaCostume Costume { get; init; }
+}
