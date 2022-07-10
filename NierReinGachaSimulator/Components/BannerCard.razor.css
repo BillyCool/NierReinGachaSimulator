@@ -1,3 +1,7 @@
 ﻿.card-footer {
     background: #101010;
 }
+
+.nav-link.active .card-footer {
+    background: #202020;
+}
