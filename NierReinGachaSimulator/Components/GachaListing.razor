@@ -1,0 +1,8 @@
+﻿<MudContainer Class="d-flex flex-wrap gap-5 justify-center" MaxWidth="MaxWidth.Medium">
+    @foreach(var gacha in Gachas)
+    {
+        <MudLink Href="@($"gacha/{gacha.GachaId}")" Underline="Underline.None">
+            <GachaListItem Gacha="gacha" />
+        </MudLink>
+    }
+</MudContainer>

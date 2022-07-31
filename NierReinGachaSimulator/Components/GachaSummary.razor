@@ -1,0 +1,41 @@
+﻿<MudCard Style="width: 250px;">
+    <MudCardHeader Class="justify-center">
+        @if (RarityType == RarityType.FourStar)
+        {
+            <MudImage Src="img/ui/thumbnail_rarity_icon_rainbow.png" />
+            <MudImage Src="img/ui/thumbnail_rarity_icon_rainbow.png" />
+            <MudImage Src="img/ui/thumbnail_rarity_icon_rainbow.png" />
+            <MudImage Src="img/ui/thumbnail_rarity_icon_rainbow.png" />
+        }
+        else if (RarityType == RarityType.ThreeStar)
+        {
+            <MudImage Src="img/ui/thumbnail_rarity_icon_gold.png" />
+            <MudImage Src="img/ui/thumbnail_rarity_icon_gold.png" />
+            <MudImage Src="img/ui/thumbnail_rarity_icon_gold.png" />
+        }
+        else
+        {
+            <MudImage Src="img/ui/thumbnail_rarity_icon_silver.png" />
+            <MudImage Src="img/ui/thumbnail_rarity_icon_silver.png" />
+        }
+    </MudCardHeader>
+    <MudCardContent>
+        <MudContainer Class="d-flex justify-space-between px-0">
+            <MudText Class="d-inline-block align-self-center">Weapons: @WeaponCount</MudText>
+            @if (PullItemCounter > 0)
+            {
+                <MudChip Size="Size.Small" Color="GetRngColor(WeaponRngOffset)">@($"{(int)WeaponRngOffset}%")</MudChip>
+            }
+        </MudContainer>
+        @if (CostumeCount != null)
+        {
+            <MudContainer Class="d-flex justify-space-between px-0 mt-4">
+                <MudText Class="d-inline-block align-self-center">Costumes: @CostumeCount</MudText>
+                @if (PullItemCounter > 0)
+                {
+                    <MudChip Size="Size.Small" Color="GetRngColor(CostumeRngOffset)">@($"{(int)CostumeRngOffset}%")</MudChip>
+                }
+            </MudContainer>
+        }
+    </MudCardContent>
+</MudCard>

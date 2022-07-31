@@ -2,11 +2,11 @@
 {
     public enum RarityType
     {
-        UNKNOWN = 0,
-        NORMAL = 10,
-        RARE = 20,
-        S_RARE = 30,
-        SS_RARE = 40,
-        LEGEND = 50
+        Unknown = 0,
+        OneStar = 10,
+        TwoStar = 20,
+        ThreeStar = 30,
+        FourStar = 40,
+        FiveStar = 50
     }
 }

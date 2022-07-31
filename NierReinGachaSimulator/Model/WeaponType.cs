@@ -2,14 +2,12 @@
 {
     public enum WeaponType
     {
-        UNKNOWN = 0,
-        SWORD = 1,
-        SPEAR = 2,
-        BIG_SWORD = 3,
-        FIST = 4,
-        STAFF = 5,
-        GUN = 6,
-        COMPANION = 7,
-        MT_WEAPON = 8
+        Unknown = 0,
+        Sword = 1,
+        Spear = 2,
+        BigSword = 3,
+        Fist = 4,
+        Staff = 5,
+        Gun = 6
     }
 }

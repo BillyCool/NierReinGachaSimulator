@@ -2,9 +2,9 @@
 {
     public class RarityRateDetail
     {
-        public GachaWeapon Weapon { get; init; }
+        public GachaWeaponModel Weapon { get; init; }
 
-        public GachaCostume Costume { get; init; }
+        public GachaCostumeModel Costume { get; init; }
 
         public decimal Rate { get; set; }
     }

@@ -2,12 +2,12 @@
 {
     public enum AttributeType
     {
-        UNKNOWN = 0,
-        FIRE = 2,
-        WATER = 5,
-        WIND = 6,
-        LIGHT = 3,
-        DARK = 1,
-        NOTHING = 4
+        Unknown = 0,
+        Dark = 1,
+        Fire = 2,
+        Light = 3,
+        Nothing = 4,
+        Water = 5,
+        Wind = 6
     }
 }

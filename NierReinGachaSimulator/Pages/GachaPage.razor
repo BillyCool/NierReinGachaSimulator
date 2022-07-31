@@ -1,0 +1,11 @@
+﻿@page "/gacha/{gachaId:int}"
+
+<PageTitle>@Gacha?.Name - NieR Re[in]carnation Gacha Simulator</PageTitle>
+
+@if (Gacha != null)
+{
+    <GachaDetails Gacha="Gacha" />
+}
+else {
+    <Loading />
+}

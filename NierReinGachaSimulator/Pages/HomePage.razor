@@ -1,0 +1,12 @@
+﻿@page "/"
+
+<PageTitle>NieR Reincarnation Gacha Simulator</PageTitle>
+
+@if (Gachas?.Length > 0)
+{
+    <GachaListing Gachas="Gachas" />
+}
+else
+{
+    <Loading />
+}

@@ -1,30 +1,9 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
-    <div class="container-fluid">
-        <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-    </div>
-</div>
-
-<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
-    <nav class="justify-content-center">
+﻿<MudNavMenu Rounded="true" Class="pa-2">
+    <MudNavLink Href="" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.Home">The Cage</MudNavLink>
+    <MudNavGroup Title="Gachas" Icon="@Icons.Filled.SensorDoor" Expanded>
         @foreach (var gacha in Gachas)
         {
-            <BannerCard Gacha="gacha" />
+            <MudNavLink Href="@($"/gacha/{gacha.GachaId}")">@gacha.Name</MudNavLink>
         }
-    </nav>
-</div>
-
-@code {
-    [CascadingParameter(Name = "Gachas")]
-    public Gacha[] Gachas { get; set; }
-
-    private bool collapseNavMenu = true;
-
-    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
-
-    private void ToggleNavMenu()
-    {
-        collapseNavMenu = !collapseNavMenu;
-    }
-}
+    </MudNavGroup>
+</MudNavMenu>

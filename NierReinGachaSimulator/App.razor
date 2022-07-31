@@ -4,9 +4,6 @@
         <FocusOnNavigate RouteData="@routeData" Selector="h1" />
     </Found>
     <NotFound>
-        <PageTitle>Not found</PageTitle>
-        <LayoutView Layout="@typeof(MainLayout)">
-            <p role="alert">You reached the end of the cage...</p>
-        </LayoutView>
+        <NotFound />
     </NotFound>
 </Router>

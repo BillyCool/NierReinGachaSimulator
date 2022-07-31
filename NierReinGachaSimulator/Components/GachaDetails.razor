@@ -1,0 +1,22 @@
+﻿<MudContainer Class="d-flex flex-wrap gap-15 justify-center" MaxWidth="MaxWidth.Medium">
+    @foreach (var pull in Pulls)
+    {
+        <GachaPullItem Model="pull" />
+    }
+</MudContainer>
+<MudContainer Class="d-flex flex-wrap gap-2 justify-center mt-10" MaxWidth="MaxWidth.Medium">
+    <MudButton Variant="Variant.Filled" Color="Color.Dark" OnClick="Pull">Pull</MudButton>
+    <MudButton Variant="Variant.Filled" Color="Color.Dark" OnClick="Reset">Reset</MudButton>
+</MudContainer>
+<MudContainer Class="d-flex flex-wrap gap-2 justify-center mt-6" MaxWidth="MaxWidth.Medium">
+    <MudText>Pulls: @PullItemCounter</MudText>
+</MudContainer>
+<MudContainer Class="d-flex flex-wrap gap-2 justify-center mt-10" MaxWidth="MaxWidth.Medium">
+    <CascadingValue Name="Gacha" Value="Gacha">
+        <CascadingValue Name="PullItemCounter" Value="PullItemCounter">
+            <GachaSummary RarityType="RarityType.FourStar" WeaponCount="GetWeaponCount(RarityType.FourStar)" CostumeCount="GetCostumeCount(RarityType.FourStar)" />
+            <GachaSummary RarityType="RarityType.ThreeStar" WeaponCount="GetWeaponCount(RarityType.ThreeStar)" CostumeCount="GetCostumeCount(RarityType.ThreeStar)" />
+            <GachaSummary RarityType="RarityType.TwoStar" WeaponCount="GetWeaponCount(RarityType.TwoStar)" CostumeCount="GetCostumeCount(RarityType.TwoStar)" />
+        </CascadingValue>
+    </CascadingValue>
+</MudContainer>

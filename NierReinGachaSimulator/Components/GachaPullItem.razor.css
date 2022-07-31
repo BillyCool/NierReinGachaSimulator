@@ -1,0 +1,59 @@
+﻿::deep .gacha-item {
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+::deep .fade-in-out {
+    -webkit-animation: fadeinout 4s linear;
+    animation: fadeinout 4s linear;
+    animation-iteration-count: infinite;
+}
+
+::deep .fade-out-in {
+    -webkit-animation: fadeoutin 4s linear;
+    animation: fadeoutin 4s linear;
+    animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes fadeinout {
+    0%,100% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeinout {
+    0%,100% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadeoutin {
+    0%,100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+@keyframes fadeoutin {
+    0%,100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}

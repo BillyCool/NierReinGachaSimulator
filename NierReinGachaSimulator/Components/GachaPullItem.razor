@@ -1,0 +1,20 @@
+﻿<MudPaper Class="mud-theme-transparent relative" Height="230px" Width="110px" Elevation="0">
+    <MudOverlay Absolute Visible />
+    @if (Model == null)
+    {
+        <MudImage Src="@($"img/ui/costume_empty_large.png")" ObjectPosition="ObjectPosition.Center" Class="absolute" />
+    }
+    else
+    {
+        <span>
+            <MudImage Src="@($"img/ui/thumbnail_bg_{BackgroundImage}_b.png")" ObjectPosition="ObjectPosition.Center" Class="absolute" />
+            <MudImage Src="@($"img/weapon/{Model.Weapon.FileName}_large.png")" ObjectPosition="ObjectPosition.Center" Class="@("absolute gacha-item " + (Model.HasCostume ? "fade-in-out" : ""))" />
+            <MudImage Src="@($"img/ui/attribute_{AttributeTypeStr}.png")" ObjectPosition="ObjectPosition.LeftTop" Class="absolute z-10" />
+            <MudImage Src="@($"img/ui/weapon_icon_{WeaponTypeStr}.png")" ObjectPosition="ObjectPosition.LeftTop" Class="absolute z-10" Style="top:34px" />
+            @if (Model.HasCostume)
+            {
+                <MudImage Src="@($"img/costume/{Model.Costume.FileName}_large.png")" ObjectPosition="ObjectPosition.Center" Class="absolute gacha-item fade-out-in" />
+            }
+        </span>
+    }
+</MudPaper>
