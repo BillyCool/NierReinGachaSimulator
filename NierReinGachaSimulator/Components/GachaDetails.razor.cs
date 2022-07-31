@@ -36,13 +36,15 @@ public partial class GachaDetails
 
     private async Task Pull()
     {
-        Pulls.Clear();
+        ResetPulls();
         await Task.Delay(1);
 
         for (int i = 0; i < Gacha.ItemsPerPull - 1; i++)
         {
+            Pulls.RemoveAt(0);
             Pulls.Add(PullItem());
         }
+        Pulls.RemoveAt(0);
         Pulls.Add(PullLastItem());
 
         PullCounter++;
@@ -50,16 +52,13 @@ public partial class GachaDetails
 
     private async Task Reset()
     {
-        Pulls.Clear();
+        ResetPulls();
         await Task.Delay(1);
-        for (int i = 0; i < Gacha.ItemsPerPull; i++)
-        {
-            Pulls.Add(null);
-        }
+
         PullCounter = 0;
         WeaponTracking.Clear();
         CostumeTracking.Clear();
-        this.StateHasChanged();
+        StateHasChanged();
     }
 
     private GachaPullItemModel PullItem()
@@ -82,7 +81,16 @@ public partial class GachaDetails
         return item;
     }
 
-    private GachaPullItemModel PullItemFromPool(List<RarityRateDetail> items)
+    private void ResetPulls()
+    {
+        Pulls.Clear();
+        for (int i = 0; i < Gacha.ItemsPerPull; i++)
+        {
+            Pulls.Add(null);
+        }
+    }
+
+    private static GachaPullItemModel PullItemFromPool(List<RarityRateDetail> items)
     {
         Random rand = new();
 
