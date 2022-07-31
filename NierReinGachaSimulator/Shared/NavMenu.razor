@@ -3,7 +3,7 @@
     <MudNavGroup Title="Gachas" Icon="@Icons.Filled.SensorDoor" Expanded>
         @foreach (var gacha in Gachas)
         {
-            <MudNavLink Href="@($"/gacha/{gacha.GachaId}")">@gacha.Name</MudNavLink>
+            <MudNavLink Href="@($"gacha/{gacha.GachaId}")">@gacha.Name</MudNavLink>
         }
     </MudNavGroup>
 </MudNavMenu>
