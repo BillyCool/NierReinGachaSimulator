@@ -1,50 +1,21 @@
-/* /Components/BannerCard.razor.rz.scp.css */
-.card-footer[b-2eielk76ww] {
-    background: #101010;
+/* /Components/GachaPullItem.razor.rz.scp.css */
+[b-yyiofw9bbf] .gacha-item {
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 
-a.active .card-footer[b-2eielk76ww] {
-    background: #202020;
-}
-/* /Components/GachaItemCostume.razor.rz.scp.css */
-.fade-out-in[b-bdcilqw6ht] {
-    -webkit-animation: fadeoutin 4s linear;
-    animation: fadeoutin-b-bdcilqw6ht 4s linear;
+[b-yyiofw9bbf] .fade-in-out {
+    -webkit-animation: fadeinout 4s linear;
+    animation: fadeinout-b-yyiofw9bbf 4s linear;
     animation-iteration-count: infinite;
 }
 
-@-webkit-keyframes fadeoutin {
-    0%,100% {
-        opacity: 1;
-    }
-
-    50% {
-        opacity: 0;
-    }
-}
-
-@keyframes fadeoutin-b-bdcilqw6ht {
-    0%,100% {
-        opacity: 1;
-    }
-
-    50% {
-        opacity: 0;
-    }
-}
-/* /Components/GachaItemInfo.razor.rz.scp.css */
-.pull-item-attribute[b-84yo427ucq] {
-    z-index: 10;
-}
-
-.pull-item-type[b-84yo427ucq] {
-    top: 34px;
-    z-index: 10;
-}
-/* /Components/GachaItemWeapon.razor.rz.scp.css */
-.fade-in-out[b-4a4zeqfki6] {
-    -webkit-animation: fadeinout 4s linear;
-    animation: fadeinout-b-4a4zeqfki6 4s linear;
+[b-yyiofw9bbf] .fade-out-in {
+    -webkit-animation: fadeoutin 4s linear;
+    animation: fadeoutin-b-yyiofw9bbf 4s linear;
     animation-iteration-count: infinite;
 }
 
@@ -58,7 +29,7 @@ a.active .card-footer[b-2eielk76ww] {
     }
 }
 
-@keyframes fadeinout-b-4a4zeqfki6 {
+@keyframes fadeinout-b-yyiofw9bbf {
     0%,100% {
         opacity: 0;
     }
@@ -67,55 +38,23 @@ a.active .card-footer[b-2eielk76ww] {
         opacity: 1;
     }
 }
-/* /Shared/MainLayout.razor.rz.scp.css */
-.page[b-326rqreosk] {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    background: #101010;
-}
 
-main[b-326rqreosk] {
-    flex: 1;
-}
-
-.sidebar[b-326rqreosk] {
-    background: #000;
-}
-
-@media (min-width: 641px) {
-    .page[b-326rqreosk] {
-        flex-direction: row;
+@-webkit-keyframes fadeoutin {
+    0%,100% {
+        opacity: 1;
     }
 
-    .sidebar[b-326rqreosk] {
-        width: 260px;
-        height: 100vh;
-        position: sticky;
-        top: 0;
+    50% {
+        opacity: 0;
     }
 }
-/* /Shared/NavMenu.razor.rz.scp.css */
-.navbar-toggler[b-i3su8gher4] {
-    background-color: #101010;
-}
 
-.top-row[b-i3su8gher4] {
-    height: 3.5rem;
-}
-
-nav[b-i3su8gher4] {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-@media (min-width: 641px) {
-    .navbar-toggler[b-i3su8gher4] {
-        display: none;
+@keyframes fadeoutin-b-yyiofw9bbf {
+    0%,100% {
+        opacity: 1;
     }
 
-    .collapse[b-i3su8gher4] {
-        /* Never collapse the sidebar for wide screens */
-        display: block;
+    50% {
+        opacity: 0;
     }
 }
