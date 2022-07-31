@@ -34,9 +34,10 @@ public partial class GachaDetails
         }
     }
 
-    private void Pull()
+    private async Task Pull()
     {
         Pulls.Clear();
+        await Task.Delay(1);
 
         for (int i = 0; i < Gacha.ItemsPerPull - 1; i++)
         {
@@ -47,9 +48,10 @@ public partial class GachaDetails
         PullCounter++;
     }
 
-    private void Reset()
+    private async Task Reset()
     {
         Pulls.Clear();
+        await Task.Delay(1);
         for (int i = 0; i < Gacha.ItemsPerPull; i++)
         {
             Pulls.Add(null);
@@ -57,6 +59,7 @@ public partial class GachaDetails
         PullCounter = 0;
         WeaponTracking.Clear();
         CostumeTracking.Clear();
+        this.StateHasChanged();
     }
 
     private GachaPullItemModel PullItem()
