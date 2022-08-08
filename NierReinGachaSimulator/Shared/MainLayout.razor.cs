@@ -13,7 +13,7 @@ public partial class MainLayout
 
     protected override async Task OnInitializedAsync()
     {
-        Gachas = await Http.GetFromJsonAsync<GachaModel[]>("data/gacha.json?v=20220801");
+        Gachas = await Http.GetFromJsonAsync<GachaModel[]>("data/gacha.json?v=20220808");
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
